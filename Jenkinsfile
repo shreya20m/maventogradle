@@ -10,6 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                sh 'chmod +x gradlew'
                 sh './gradlew clean build'
             }
         }
@@ -22,7 +23,7 @@ pipeline {
 
         stage('Run Application') {
             steps {
-                sh 'java -cp build/libs/MyMavenApp-1.0-SNAPSHOT.jar com.example.App'
+                sh './gradlew run'
             }
         }
     }
